@@ -1,0 +1,82 @@
+body{
+     font-family: sans-serif;
+     font-size:90%;
+     width:800px;
+     color: #5d9abd;
+
+}
+
+nav{
+     height: 25px;
+     width: inherit;
+     border-bottom: 1px solid #bdbdbd;
+     margin-bottom: 25px;
+     padding: 10px;
+     text-decoration: none;
+}
+nav a:link, nav a:visited{
+     text-decoration: none;
+     color: #bdbdbd;
+}
+
+nav a:hover{
+     color: #5d9abd;
+}
+
+.inline{
+     display: inline-block;
+}
+.block{
+     display: block;
+}
+
+
+.home{
+     font-size: 20px;
+}
+
+.right{
+     float: right;
+}
+
+fieldset{
+     border: 1px solid #bdbdbd;
+     margin-left: 15px;
+
+}
+
+
+.container legend{
+     text-align: left;
+     border-color: #bdbdbd;
+     font-size: 20px;
+     border-width: 1px;
+}
+
+
+.container{
+     width:350px;
+     text-align: right;
+}
+.tables{
+     margin: 30px 0;
+}
+.button{
+     background-color:#5d9abd;
+     color:#ffffff;
+     border: none;
+     padding: 5px 10px;
+     text-align: center;
+     text-decoration: none;
+
+}
+
+input{
+     margin-left: 10px;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    width:600px;
+}
+tr:nth-child(even) {background-color: #f2f2f2}

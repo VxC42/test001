@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'travelApp/css/styles.css' %}" >
+
+          <title>Add Plan</title>
+     </head>
+     <body>
+          <nav>
+               <div class="inline home"><a href="{% url 'travels' %}"> Home </a></div>
+               <div class="inline right"><a href="{% url 'logoff' %}">Log Off</a></div>
+          </nav>
+          <div id="flashes">
+               <p>
+                    {%if errors%}
+                    <ul>
+                         {%for message in errors%}
+                              <li>{{message}}</li>
+                         {%endfor%}
+                    </ul>
+                    {%endif%}
+               </p>
+          </div>
+          <div class="container inline">
+               <h1>Add a Trip</h1>
+               <form action="{% url 'addPlan' %}" method="POST">
+
+                         {%csrf_token%}
+                         <p>Destination:<input type="text" class="textfield" name="destination"></p>
+                         <p>Description:<input type="text" class="textfield" name="description"></p>
+                         <p>Travel Date From:<input type="date" class="textfield" name="startDate"></p>
+                         <p>Travel Date To:<input type="date" class="textfield" name="endDate"></p>
+                         <input type="submit" class="button" value="Add">
+
+               </form>
+          </div>
+
+     </body>
+</html>

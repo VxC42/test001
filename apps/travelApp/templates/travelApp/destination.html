@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'travelApp/css/styles.css' %}" >
+
+          <title>Destination</title>
+     </head>
+     <body>
+          <nav>
+               <div class="inline home"><a href="{% url 'travels' %}"> Home </a></div>
+               <div class="inline right"><a href="{% url 'logoff' %}">Log Off</a></div>
+          </nav>
+          <div class="container inline">
+               <h3>{{trip.destination}}</h3>
+               <div class="container">
+                    <p>Planned By: {{trip.created_by}}</p>
+                    <p>Description: {{trip.description}}</p>
+                    <p>Travel Date From: {{trip.start_date|date:'m d, Y' }}</p>
+                    <p>Travel Date To: {{trip.end_date|date:'M d, Y' }}</p>
+               </div>
+               <h3>Other User's joining the trip:</h3>
+               <div class="container">
+                    <p>{%for i in trip.users.all%}
+                    <p>{{i.name}}</p>
+               {%endfor%}</p>
+
+               </div>
+          </div>
+
+     </body>
+</html>

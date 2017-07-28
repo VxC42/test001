@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'travelApp/css/styles.css' %}" >
+
+          <title>Travel Dashboard</title>
+     </head>
+     <body>
+          <nav>
+               <div class="inline right"><a href="{% url 'logoff' %}">Log Off</a></div>
+          </nav>
+
+          <h1> Hello, {{currentUser.name}}</h1>
+          <div class="tables">
+               Your Trip Schedules
+               <table>
+                    <tr>
+                         <th>Destination</th>
+                         <th>Travel Start Date</th>
+                         <th>Travel End Date</th>
+                         <th>Plan</th>
+                    </tr>
+
+                    {%for trip in trips%}
+                    {%if currentUser in trip.users.all%}
+                    <tr>
+                         <td><a href="travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+                         <td>{{trip.start_date|date:'M d, Y' }}</td>
+                         <td>{{trip.end_date|date:'M d, Y' }}</td>
+                         <td>{{trip.description}}</td>
+                    </tr>
+                    {%endif%}
+                    {%endfor%}
+               </table>
+          </div>
+          <div class="tables">
+               Other User's Travel Plans
+               <table>
+                    <tr>
+                         <th>Name</th>
+                         <th>Destination</th>
+                         <th>Travel Start Date</th>
+                         <th>Travel End Date</th>
+                         <th>Do You Want to Join</th>
+                    </tr>
+                    {%for trip in trips%}
+                    {%if currentUser not in trip.users.all%}
+                    <tr>
+                         <td>{%for i in trip.users.all%}
+                         {{i.name}}
+                    {%endfor%}</td>
+                         <td><a href="travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+                         <td>{{trip.start_date|date:'M d, Y' }}</td>
+                         <td>{{trip.end_date|date:'M d, Y' }}</td>
+                         <td><a href="/join/{{trip.id}}">Join</a></td>
+                    </tr>
+                    {%endif%}
+                    {%endfor%}
+               </table>
+          </div>
+          <div class="right"><a href='travels/add'>Add Tavel Plan</a></div>
+     </body>
+</html>

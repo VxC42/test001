@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+     <head>
+          <meta charset="utf-8">
+          {% load staticfiles %}
+     <link rel="stylesheet" href="{% static 'travelApp/css/styles.css' %}" >
+
+          <title>Login/Registration</title>
+     </head>
+     <body>
+          <nav>
+               <div class="inline home"><a href="/home"> Home </a></div>
+          </nav>
+          <div id="flashes">
+               <p>
+                    {%if errors%}
+                    <ul>
+                         {%for message in errors%}
+                              <li>{{message}}</li>
+                         {%endfor%}
+                    </ul>
+                    {%endif%}
+               </p>
+          </div>
+          <div class="container inline">
+               <form action="{% url 'register' %}" method="POST">
+                    <fieldset>
+                    <legend>Registration</legend>
+                         {%csrf_token%}
+                         <p>Name:<input type="text" class="textfield" name="name"></p>
+                         <p>Username:<input type="text" class="textfield" name="username"></p>
+                         <p>Password:<input type="password" class="textfield" name="password"></p>
+                         <p>Confirm Password:<input type="password" class="textfield" name="confirm_password"></p>
+                         <input type="submit" class="button" value="Register">
+                    </fieldset>
+               </form>
+          </div>
+          <div class="container inline right">
+               <form action="{% url 'login' %}" method="POST">
+                    <fieldset>
+                    <legend>Login</legend>
+                         {%csrf_token%}
+                         <p>Username:<input type="text" class="textfield" name="username"></p>
+                         <p>Password:<input type="password" class="textfield" name="password"></p>
+                         <input type="submit" class="button" value="Login">
+                    </fieldset>
+               </form>
+          </div>
+     </body>
+</html>
