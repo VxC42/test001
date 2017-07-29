@@ -109,8 +109,7 @@ def travels(request):
     return render(request, "travelApp/travels.html", context)
 
 def add(request):
-    if request.method=='GET':
-        return redirect('/')
+
     return render(request, "travelApp/add.html")
 
 def addPlan(request):
